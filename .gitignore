@@ -1,0 +1,34 @@
+# ============================
+# Dotfiles / config repo (自動生成)
+# ============================
+*.tmp
+*.temp
+
+# ============================
+# OS generated files (optional)
+# ============================
+# .DS_Store
+# .AppleDouble
+# .LSOverride
+# ._*
+
+# ============================
+# Editor/IDE (optional)
+# ============================
+# .vscode/*
+# !.vscode/settings.json
+# !.vscode/extensions.json
+# *.swp
+# *.swo
+# *~
+# .netrwhist
+
+# ============================
+# Secrets & credentials (recommended)
+# ============================
+.env
+.env.*
+*.pem
+*.key
+*.p12
+credentials.json

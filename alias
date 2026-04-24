@@ -1,0 +1,40 @@
+# alias
+alias rm='rm -i'
+alias cp='cp -i'
+alias oc='opencode'
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+alias tmuxa="tmux a"
+alias last="last | less"
+alias cat="bat --plain"
+alias cls="clear"
+
+#ssh関連
+alias rsync='rsync -vzr'
+alias le="bat --plain"
+# 日本語英語の切り替えを行う
+alias en="export LANG=en_US.UTF-8 ; echo LANG=en_US.UTF-8"
+alias jp="export LANG=ja_JP.UTF-8 ; echo LANG=ja_JP.UTF-8"
+alias ja="export LANG=ja_JP.UTF-8 ; echo LANG=ja_JP.UTF-8"
+
+alias history='history 1'
+alias tree="eza -T --icons"
+alias ls='ls -GF --color=auto'
+alias l="eza --icons --color=always --group-directories-first --long --header -GF --color=auto"
+alias la='ls -A --color=auto'
+alias ll='ls -lAh --color=auto'
+alias sl="ls"
+
+
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
+
+alias gt="git tree"
+alias gb="git branch"
+alias gs="git status"
+alias gd="git diff"
+
+
+if [[ "$TERM_PROGRAM" == "WezTerm" ]]; then
+    alias imgcat="wezterm imgcat"
+fi
