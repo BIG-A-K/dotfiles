@@ -9,6 +9,7 @@
 - `vimrc`
 - `alias`: エイリアスをまとめて設定したファイル。bashでも利用可能
 - `starship.toml`: mac用のstarshipファイル
+- `scripts/imgcat`: iTerm2のInline Images Protocol用スクリプト。iTerm2の公開スクリプトを元に、WezTermで使いやすいように調整しています
 
 ## 使い方
 ### 必須条件
@@ -28,4 +29,3 @@ mise use -g uv bat aws-cli bun claude-code npm:@openai/codex@latest delta starsh
 ```
 
 ### 2. 設定の反映
-

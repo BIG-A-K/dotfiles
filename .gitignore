@@ -32,3 +32,10 @@
 *.key
 *.p12
 credentials.json
+.ssh/
+.aws/
+.config/gcloud/
+.zsh_history
+*.local
+token*
+secret*
