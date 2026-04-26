@@ -26,7 +26,7 @@ curl https://mise.run | sh
 完了したら以下を実行します
 
 ```sh
-mise use -g uv bat aws-cli bun claude-code npm:@openai/codex@latest delta starship opencode eza tmux dust
+mise use -g uv bat aws-cli bun claude-code delta starship opencode eza tmux dust
 ```
 
 ### 2. 設定の反映
