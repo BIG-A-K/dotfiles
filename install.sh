@@ -86,10 +86,10 @@ link_file() {
 }
 
 case "$STARSHIP_PROFILE" in
-  earth|mars|mercury|uranus) ;;
+  earth|mars|mercury|uranus|venus) ;;
   *)
     echo "error: unknown starship profile: $STARSHIP_PROFILE" >&2
-    echo "available profiles: earth, mars, mercury, uranus" >&2
+    echo "available profiles: earth, mars, mercury, uranus, venus" >&2
     exit 1
     ;;
 esac
