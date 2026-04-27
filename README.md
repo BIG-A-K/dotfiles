@@ -43,6 +43,8 @@ cd ~/dot_files
 
 Starshipの設定は `earth` がデフォルトです。別のプロファイルを使う場合は `--starship` を指定します。
 
+利用可能なプロファイルは `mercury`, `venus`, `earth`, `mars`, `jupiter`, `saturn`, `uranus`, `neptune` です。
+
 ```sh
 ./install.sh --starship mars
 ```

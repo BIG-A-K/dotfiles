@@ -1,0 +1,112 @@
+format = """
+[](fg:#C98B45)\
+$os\
+[](fg:#C98B45)\
+[ ](fg:#E7C99D)\
+$username\
+$hostname\
+[](fg:#E7C99D)\
+[ ](fg:#4B352B)\
+$directory\
+[](fg:#4B352B bg:#4B352B)\
+$git_branch\
+$git_status\
+[](fg:#4B352B bg:#251D1A)\
+$nodejs\
+$rust\
+$golang\
+$php\
+\n$character
+"""
+
+[username]
+style_user = "fg:#4B352B bg:#E7C99D"
+format = "[$user]($style)"
+show_always = true
+
+[hostname]
+ssh_only = false
+style = "fg:#4B352B bg:#E7C99D"
+format = "[@$hostname]($style)"
+
+[directory]
+style = "fg:#E7C99D bg:#4B352B"
+read_only = ''
+format = '[ $path ]($style)[$read_only]($style)'
+truncation_length = 0
+truncate_to_repo = false
+use_os_path_sep = true
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[git_branch]
+symbol = ""
+style = "bg:#4B352B"
+format = '[[ $symbol $branch ](fg:#E7C99D bg:#4B352B)]($style)'
+
+[git_status]
+style = "bg:#4B352B"
+format = '[[($all_status$ahead_behind )](fg:#E7C99D bg:#4B352B)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#251D1A"
+format = '[[ $symbol ($version) ](fg:#D79A5B bg:#251D1A)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#251D1A"
+format = '[[ $symbol ($version) ](fg:#D79A5B bg:#251D1A)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:#251D1A"
+format = '[[ $symbol ($version) ](fg:#D79A5B bg:#251D1A)]($style)'
+
+[php]
+symbol = ""
+style = "bg:#251D1A"
+format = '[[ $symbol ($version) ](fg:#D79A5B bg:#251D1A)]($style)'
+
+[time]
+disabled = false
+time_format = "%T"
+style = "bg:#1d2230"
+format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
+
+[localip]
+style = "fg:#e3e5e5 bg:#E7C99D"
+ssh_only = false
+format = '[[ $localipv4 ](fg:#E7C99D bg:#1d2230)]($style)'
+disabled = false
+
+[os]
+disabled = false
+style = "bg:#C98B45 fg:#ffffff"
+
+[os.symbols]
+Windows = " 󰍲 "
+Ubuntu = " 󰕈 "
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = " 󰀵 "
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = " 󰣇 "
+Artix = " 󰣇 "
+EndeavourOS = ""
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+Pop = ""
