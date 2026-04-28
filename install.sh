@@ -11,7 +11,7 @@ usage() {
 Usage: ./install.sh [options]
 
 Options:
-  --starship NAME  Starship profile name: mercury, venus, earth, mars, jupiter, saturn, uranus, neptune
+  --starship NAME  Starship profile name: mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, pruto (default: earth)
   --dry-run        Show actions without changing files
   -h, --help       Show this help
 USAGE
@@ -86,10 +86,10 @@ link_file() {
 }
 
 case "$STARSHIP_PROFILE" in
-  mercury|venus|earth|mars|jupiter|saturn|uranus|neptune) ;;
+  mercury|venus|earth|mars|jupiter|saturn|uranus|neptune|pruto) ;;
   *)
     echo "error: unknown starship profile: $STARSHIP_PROFILE" >&2
-    echo "available profiles: mercury, venus, earth, mars, jupiter, saturn, uranus, neptune" >&2
+    echo "available profiles: mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, pruto" >&2
     exit 1
     ;;
 esac
