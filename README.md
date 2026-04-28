@@ -34,8 +34,8 @@ mise use -g uv bat aws-cli bun claude-code delta starship opencode eza tmux dust
 リポジトリをcloneして、インストールスクリプトを実行します。
 
 ```sh
-git clone https://github.com/BIG-A-K/dot_files.git ~/dot_files
-cd ~/dot_files
+git clone https://github.com/BIG-A-K/dotfiles.git ~/dotfiles
+cd ~/dotfiles
 ./install.sh
 ```
 
