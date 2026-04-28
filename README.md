@@ -3,6 +3,7 @@
 
 ## 内容物
 - `tmux.conf`
+- `wezterm.lua`
 - `gitconfig`
 - `zshrc`
 - `nvim/init.lua`: neovimの設定ファイル
@@ -62,6 +63,7 @@ Starshipの設定は `earth` がデフォルトです。別のプロファイル
 - `~/.gitconfig` -> `gitconfig`
 - `~/.vimrc` -> `vimrc`
 - `~/.tmux.conf` -> `tmux.conf`
+- `~/.config/wezterm/wezterm.lua` -> `wezterm.lua`
 - `~/.config/nvim` -> `nvim`
 - `~/.config/starship.toml` -> `starship.conf/<profile>.toml`
 - `~/.local/bin/imgcat` -> `scripts/imgcat`
