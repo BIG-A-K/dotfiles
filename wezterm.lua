@@ -68,6 +68,8 @@ wezterm.on('format-tab-title', function(tab, _, _, _, _, max_width)
 end)
 
 config.font_size = 12.0
-config.font = wezterm.font('JetBrainsMono Nerd Font')
+config.font = wezterm.font("HackGen Console NF")
+
+--config.font = wezterm.font('JetBrainsMono Nerd Font')
 
 return config
