@@ -6,16 +6,19 @@ $os\
 $username\
 $hostname\
 [](fg:#E7C99D)\
-[ ](fg:#4B352B)\
+[ ](fg:#a3aed2)\
 $directory\
-[](fg:#4B352B bg:#4B352B)\
+[](fg:#a3aed2 bg:#394260)\
 $git_branch\
 $git_status\
-[](fg:#4B352B bg:#251D1A)\
+[](fg:#394260 bg:#212736)\
 $nodejs\
 $rust\
 $golang\
 $php\
+[](fg:#212736 bg:#1d2230)\
+$time\
+[ ](fg:#1d2230)\
 \n$character
 """
 
@@ -30,12 +33,13 @@ style = "fg:#4B352B bg:#E7C99D"
 format = "[@$hostname]($style)"
 
 [directory]
-style = "fg:#E7C99D bg:#4B352B"
+style = "fg:#ffffff bg:#a3aed2"
 read_only = ''
 format = '[ $path ]($style)[$read_only]($style)'
 truncation_length = 0
 truncate_to_repo = false
 use_os_path_sep = true
+
 
 [directory.substitutions]
 "Documents" = "󰈙 "
@@ -45,12 +49,12 @@ use_os_path_sep = true
 
 [git_branch]
 symbol = ""
-style = "bg:#4B352B"
-format = '[[ $symbol $branch ](fg:#E7C99D bg:#4B352B)]($style)'
+style = "bg:#394260"
+format = '[[ $symbol $branch ](fg:#E7C99D bg:#394260)]($style)'
 
 [git_status]
-style = "bg:#4B352B"
-format = '[[($all_status$ahead_behind )](fg:#E7C99D bg:#4B352B)]($style)'
+style = "bg:#394260"
+format = '[[($all_status$ahead_behind )](fg:#E7C99D bg:#394260)]($style)'
 
 [nodejs]
 symbol = ""
