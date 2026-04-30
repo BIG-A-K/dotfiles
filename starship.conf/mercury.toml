@@ -1,7 +1,7 @@
 format = """
-[](fg:#D85E33)\
+[](fg:#107dc8)\
 $os\
-[](fg:#D85E33)\
+[](fg:#107dc8)\
 [ ](fg:#6b757d)\
 $username\
 $hostname\
@@ -97,7 +97,7 @@ disabled = false
 
 [os]
 disabled = false
-style = "bg:#D85E33 fg:#ffffff"
+style = "bg:#107dc8 fg:#ffffff"
 
 
 [os.symbols]
