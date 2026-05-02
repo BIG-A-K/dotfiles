@@ -24,8 +24,8 @@ elif [ -x "$HOME/.local/bin/mise" ]; then
 fi
 
 # zsh-suggestion
-if [ -f "$HOME/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
-  source "$HOME/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+if [ -f "${${(%):-%N}:A:h}/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ]; then
+  source "${${(%):-%N}:A:h}/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 fi
 
 # aliasのファイルを読み込む
