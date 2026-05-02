@@ -90,6 +90,19 @@ autoload -Uz colors
 colors
 if command -v starship >/dev/null 2>&1; then
   eval "$(starship init zsh)"
+else
+  autoload -Uz vcs_info
+  zstyle ':vcs_info:git:*' formats ' %F{yellow} %b%f'
+  zstyle ':vcs_info:git:*' actionformats ' %F{yellow} %b|%a%f'
+  setopt prompt_subst
+
+  precmd() {
+    echo -ne "\033]0;${PWD##*/}\007"
+    vcs_info
+  }
+
+  PROMPT='%F{green}%n@%m%f %F{blue}%~%f${vcs_info_msg_0_}
+%# '
 fi
 
 # Set up the prompt
