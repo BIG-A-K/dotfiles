@@ -5,6 +5,7 @@ DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BACKUP_DIR="$HOME/.dotfiles-backup/$(date +%Y%m%d-%H%M%S)"
 STARSHIP_PROFILE="earth"
 DRY_RUN=0
+FORCE=0
 
 usage() {
   cat <<'USAGE'
@@ -13,6 +14,7 @@ Usage: ./install.sh [options]
 Options:
   --starship NAME  Starship profile name: mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, pruto (default: earth)
   --dry-run        Show actions without changing files
+  -f, --force      Overwrite existing symlinks and back up existing files/directories
   -h, --help       Show this help
 USAGE
 }
@@ -29,6 +31,10 @@ while [ "$#" -gt 0 ]; do
       ;;
     --dry-run)
       DRY_RUN=1
+      shift
+      ;;
+    -f|--force)
+      FORCE=1
       shift
       ;;
     -h|--help)
@@ -71,14 +77,24 @@ link_file() {
   target_dir="$(dirname "$target")"
   run mkdir -p "$target_dir"
 
-  if [ -L "$target" ] && [ "$(readlink "$target")" = "$source" ]; then
+  if [ "$FORCE" -eq 0 ] && [ -L "$target" ] && [ "$(readlink "$target")" = "$source" ]; then
     printf 'skip: %s already links to %s\n' "$target" "$source"
     return
   fi
 
   if [ -e "$target" ] || [ -L "$target" ]; then
-    printf 'backup: %s -> %s\n' "$target" "$BACKUP_DIR/$(basename "$target")"
-    backup_path "$target"
+    if [ "$FORCE" -eq 0 ]; then
+      printf 'skip: %s already exists; not overwriting\n' "$target"
+      return
+    fi
+
+    if [ -L "$target" ]; then
+      printf 'overwrite symlink: %s\n' "$target"
+      run rm "$target"
+    else
+      printf 'backup: %s -> %s\n' "$target" "$BACKUP_DIR/$(basename "$target")"
+      backup_path "$target"
+    fi
   fi
 
   printf 'link: %s -> %s\n' "$target" "$source"

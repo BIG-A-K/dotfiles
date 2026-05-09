@@ -50,7 +50,7 @@ cd ~/dotfiles
 git submodule update --init --recursive
 ```
 
-既存の設定ファイルがある場合は `~/.dotfiles-backup/YYYYmmdd-HHMMSS/` に退避してからsymlinkを作成します。
+既存の設定ファイルがある場合は上書きせず、symlinkの作成をスキップします。`-f, --force` を指定すると、既存の実ファイルやディレクトリは `~/.dotfiles-backup/YYYYmmdd-HHMMSS/` に退避してからsymlinkを作成し、既存のsymlinkは上書きします。
 
 Starshipの設定は `earth` がデフォルトです。別のプロファイルを使う場合は `--starship` を指定します。
 
@@ -64,6 +64,12 @@ Starshipの設定は `earth` がデフォルトです。別のプロファイル
 
 ```sh
 ./install.sh --dry-run
+```
+
+既存ファイルの退避やsymlinkの上書きも含めて反映する場合は `-f, --force` を使います。
+
+```sh
+./install.sh --force
 ```
 
 作成される主なリンクは以下です。
