@@ -4,6 +4,8 @@ alias cp='cp -i'
 alias oc='opencode'
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 alias tmuxa="tmux a"
+alias tmux='tmux new-session -s "$(basename "$PWD")"'
+
 alias last="last | less"
 alias cat="bat --plain"
 alias cls="clear"
