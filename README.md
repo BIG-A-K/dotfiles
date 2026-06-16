@@ -6,9 +6,10 @@
 - `wezterm.lua`
 - `gitconfig`
 - `zshrc`
+- `bashrc`: bashしかない小さい環境向けの最小設定ファイル
 - `nvim/init.lua`: neovimの設定ファイル
 - `vimrc`
-- `alias`: エイリアスをまとめて設定したファイル。bashでも利用可能
+- `alias`: エイリアスをまとめて設定したファイル。bashでも利用可能。追加ツールがある場合だけ拡張されます
 - `starship.conf/*.toml`: starshipの設定ファイル
 - `scripts/imgcat`: iTerm2のInline Images Protocol用スクリプト。iTerm2の公開スクリプトを元に、WezTermで使いやすいように調整しています
 - `install.sh`: 各設定ファイルをホームディレクトリへsymlinkするスクリプト
@@ -75,6 +76,7 @@ Starshipの設定は `earth` がデフォルトです。別のプロファイル
 作成される主なリンクは以下です。
 
 - `~/.zshrc` -> `zshrc`
+- `~/.bashrc` -> `bashrc`
 - `~/.alias` -> `alias`
 - `~/.gitconfig` -> `gitconfig`
 - `~/.vimrc` -> `vimrc`

@@ -111,6 +111,7 @@ case "$STARSHIP_PROFILE" in
 esac
 
 link_file "$DOTFILES_DIR/zshrc" "$HOME/.zshrc"
+link_file "$DOTFILES_DIR/bashrc" "$HOME/.bashrc"
 link_file "$DOTFILES_DIR/alias" "$HOME/.alias"
 link_file "$DOTFILES_DIR/gitconfig" "$HOME/.gitconfig"
 link_file "$DOTFILES_DIR/vimrc" "$HOME/.vimrc"
