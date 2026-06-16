@@ -43,9 +43,20 @@ bindkey ";5A" up-line-or-history
 bindkey ";5B" down-line-or-history
 bindkey '^H' backward-kill-word
 bindkey '5~' kill-word
+# タブタイトル用の文字列を返す
+# SSH接続中(=この zshrc がリモートで動作)はホスト名を前置して
+# "ホスト名:ディレクトリ名" にする。ローカルではディレクトリ名のみ。
+_tab_title() {
+  if [[ -n $SSH_CONNECTION ]]; then
+    echo "${HOST%%.*}:${PWD##*/}"
+  else
+    echo "${PWD##*/}"
+  fi
+}
+
 # コマンド実行前にタブタイトルを更新
 precmd() {
-  echo -ne "\033]0;${PWD##*/}\007"
+  echo -ne "\033]0;$(_tab_title)\007"
 }
 
 # コマンド実行中はコマンド名を表示
@@ -97,7 +108,7 @@ else
   setopt prompt_subst
 
   precmd() {
-    echo -ne "\033]0;${PWD##*/}\007"
+    echo -ne "\033]0;$(_tab_title)\007"
     vcs_info
   }
 
