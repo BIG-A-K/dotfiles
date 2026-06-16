@@ -67,11 +67,19 @@ config.keys = {
 -- 取得した値をここに保持しておく。初期値はフォールバック。
 local window_cols = 120
 
--- ステータス更新のたびにウィンドウ幅（カラム数）を記録する
+-- ステータス更新のたびにウィンドウ幅（カラム数）を記録する。
+-- pane:get_dimensions() は分割時にアクティブペイン側の幅しか返さないため、
+-- タブ内の全ペインの右端の最大値からウィンドウ全体の幅を求める。
 wezterm.on('update-status', function(window, pane)
-  local dims = pane:get_dimensions()
-  if dims and dims.cols then
-    window_cols = dims.cols
+  local tab = window:active_tab()
+  if not tab then return end
+  local max_right = 0
+  for _, p in ipairs(tab:panes_with_info()) do
+    local right = p.left + p.width
+    if right > max_right then max_right = right end
+  end
+  if max_right > 0 then
+    window_cols = max_right
   end
 end)
 
