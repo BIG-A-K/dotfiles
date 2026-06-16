@@ -1,5 +1,6 @@
 local wezterm = require 'wezterm'
 
+-- 起動時にウィンドウを最大化する
 wezterm.on('gui-startup', function(cmd)
   local _, _, window = wezterm.mux.spawn_window(cmd or {})
   window:gui_window():maximize()
@@ -13,14 +14,23 @@ config.window_decorations = 'RESIZE|TITLE'
 config.scrollback_lines = 7000
 config.use_ime = true
 config.hide_tab_bar_if_only_one_tab = true
-config.show_new_tab_button_in_tab_bar = true
-config.show_close_tab_button_in_tabs = true
+-- タブを等幅で並べてウィンドウ幅いっぱいに広げるため、
+-- テキストベースの retro タブバーを使う（fancy だと幅制御ができない）
+config.use_fancy_tab_bar = false
+-- タブ幅の上限を実質撤廃（実際の幅は format-tab-title で計算する）
+config.tab_max_width = 999
+config.tab_bar_at_bottom = false
 config.native_macos_fullscreen_mode = false
 
 config.colors = {
   cursor_bg = '#FFFFFF',
   cursor_fg = '#102134',
   cursor_border = '#FFFFFF',
+  tab_bar = {
+    background = '#0b1521',
+    new_tab = { bg_color = '#102134', fg_color = '#FFFFFF' },
+    new_tab_hover = { bg_color = '#896f3d', fg_color = '#FFFFFF' },
+  },
 }
 
 local function scheme_for_appearance(appearance)
@@ -52,14 +62,50 @@ config.keys = {
   },
 }
 
-wezterm.on('format-tab-title', function(tab, _, _, _, _, max_width)
+-- 現在のウィンドウ幅（文字数）。タブ幅の計算に使う。
+-- format-tab-title はウィンドウ幅を直接知れないため、update-status 側で
+-- 取得した値をここに保持しておく。初期値はフォールバック。
+local window_cols = 120
+
+-- ステータス更新のたびにウィンドウ幅（カラム数）を記録する
+wezterm.on('update-status', function(window, pane)
+  local dims = pane:get_dimensions()
+  if dims and dims.cols then
+    window_cols = dims.cols
+  end
+end)
+
+-- タブのタイトルを描画する。
+-- ウィンドウ幅をタブ数で等分し、各タブを同じ幅で中央寄せ表示することで
+-- タブが増えるほど 1/2, 1/3 … と縮みつつ幅いっぱいに広がるようにする。
+wezterm.on('format-tab-title', function(tab, tabs, _, _, _, _)
+  -- アクティブなタブだけ背景色を変える
   local background = '#102134'
   local foreground = '#FFFFFF'
   if tab.is_active then
     background = '#896f3d'
   end
 
-  local title = '   ' .. wezterm.truncate_right(tab.active_pane.title, max_width - 1) .. '   '
+  -- 表示テキスト（カレントディレクトリ名などのペインタイトル）
+  local display = tab.active_pane.title
+
+  -- ウィンドウ幅をタブ数で割って 1 タブあたりの幅を決める
+  local tab_width = math.floor(window_cols / #tabs)
+  -- 左右に最低 1 文字ずつ余白を確保しつつ、テキストの最大長を決める
+  local text_max = tab_width - 2
+  if text_max < 4 then text_max = 4 end
+
+  -- 幅をはみ出す場合は右側を切り詰める
+  local truncated = wezterm.truncate_right(display, text_max)
+  -- タブ幅とテキスト幅の差を左右の余白に振り分けて中央寄せにする
+  -- （column_width は全角文字も考慮した表示幅を返す）
+  local padding = tab_width - wezterm.column_width(truncated)
+  local left_pad = math.floor(padding / 2)
+  local right_pad = padding - left_pad
+  if left_pad < 0 then left_pad = 0 end
+  if right_pad < 0 then right_pad = 0 end
+
+  local title = string.rep(' ', left_pad) .. truncated .. string.rep(' ', right_pad)
   return {
     { Background = { Color = background } },
     { Foreground = { Color = foreground } },
