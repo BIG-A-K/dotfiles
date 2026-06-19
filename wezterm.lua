@@ -21,6 +21,10 @@ config.use_fancy_tab_bar = false
 config.tab_max_width = 999
 config.tab_bar_at_bottom = false
 config.native_macos_fullscreen_mode = false
+-- ウィンドウ背景を半透明にして、背面の壁紙やウィンドウが透けて見えるようにする
+--config.window_background_opacity = 0.8
+-- macOS でウィンドウ背景のブラー効果を有効にする（値が大きいほどブラーが強くなる）
+config.macos_window_background_blur = 5
 
 config.colors = {
   cursor_bg = '#FFFFFF',
