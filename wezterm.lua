@@ -64,6 +64,12 @@ config.keys = {
     mods = 'CMD|CTRL',
     action = wezterm.action.ToggleFullScreen,
   },
+  -- Cmd+W でウィンドウごと閉じるのを防ぎ、現在のペイン/タブだけを閉じる
+  {
+    key = 'w',
+    mods = 'CMD',
+    action = wezterm.action.CloseCurrentPane { confirm = true },
+  },
 }
 
 -- 現在のウィンドウ幅（文字数）。タブ幅の計算に使う。
