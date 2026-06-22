@@ -25,6 +25,7 @@ fi
 
 if command -v git >/dev/null 2>&1; then
   alias gt='git tree'
+  alias gl='git log'
   alias gb='git branch'
   alias gs='git status'
   alias gd='git diff'
