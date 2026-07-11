@@ -52,10 +52,10 @@ if [ -x /Applications/Tailscale.app/Contents/MacOS/Tailscale ]; then
   alias tailscale='/Applications/Tailscale.app/Contents/MacOS/Tailscale'
 fi
 
-case "${TERM_PROGRAM:-}" in
-  WezTerm)
-    if command -v wezterm >/dev/null 2>&1; then
-      alias imgcat='wezterm imgcat'
-    fi
-    ;;
-esac
+#case "${TERM_PROGRAM:-}" in
+#  WezTerm)
+#    if command -v wezterm >/dev/null 2>&1; then
+#      alias imgcat='wezterm imgcat'
+#    fi
+#    ;;
+#esac
