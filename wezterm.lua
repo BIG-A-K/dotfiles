@@ -26,10 +26,16 @@ config.native_macos_fullscreen_mode = false
 -- macOS でウィンドウ背景のブラー効果を有効にする（値が大きいほどブラーが強くなる）
 config.macos_window_background_blur = 5
 
+-- 外観（ダーク/ライト）に応じたカーソル色。
+-- ライトモードで白カーソルだと背景に溶けて見えないため、暗い色に切り替える
+local is_dark = wezterm.gui.get_appearance():find 'Dark'
+local cursor_color = is_dark and '#FFFFFF' or '#102134'
+local cursor_text_color = is_dark and '#102134' or '#FFFFFF'
+
 config.colors = {
-  cursor_bg = '#FFFFFF',
-  cursor_fg = '#102134',
-  cursor_border = '#FFFFFF',
+  cursor_bg = cursor_color,
+  cursor_fg = cursor_text_color,
+  cursor_border = cursor_color,
   tab_bar = {
     background = '#0b1521',
     new_tab = { bg_color = '#102134', fg_color = '#FFFFFF' },
@@ -41,7 +47,8 @@ local function scheme_for_appearance(appearance)
   if appearance:find 'Dark' then
     return 'ayu'
   end
-  return 'neobones_light'
+  -- return 'neobones_light'
+    return 'Sagelight (base16)'
 end
 
 config.color_scheme = scheme_for_appearance(wezterm.gui.get_appearance())
