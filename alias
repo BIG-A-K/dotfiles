@@ -20,6 +20,7 @@ fi
 
 if command -v eza >/dev/null 2>&1; then
   alias tree='eza -T --icons'
+  alias ls='eza --icons --color=always --group-directories-first --long --header'
   alias l='eza --icons --color=always --group-directories-first --long --header'
 fi
 
@@ -52,10 +53,25 @@ if [ -x /Applications/Tailscale.app/Contents/MacOS/Tailscale ]; then
   alias tailscale='/Applications/Tailscale.app/Contents/MacOS/Tailscale'
 fi
 
-#case "${TERM_PROGRAM:-}" in
-#  WezTerm)
-#    if command -v wezterm >/dev/null 2>&1; then
-#      alias imgcat='wezterm imgcat'
-#    fi
-#    ;;
-#esac
+# Wrap imgcat in a function to avoid "argument list too long" with large globs.
+# Shell functions bypass execve's ARG_MAX; files are passed one at a time.
+if command -v imgcat >/dev/null 2>&1; then
+  imgcat() {
+    local opts=()
+    while [[ $# -gt 0 ]]; do
+      case "$1" in
+        -W|-H|-t) opts+=("$1" "$2"); shift ;;
+        -*) opts+=("$1") ;;
+        *) break ;;
+      esac
+      shift
+    done
+    if [[ $# -eq 0 ]]; then
+      command imgcat "${opts[@]}"
+      return
+    fi
+    for f in "$@"; do
+      command imgcat "${opts[@]}" "$f"
+    done
+  }
+fi
