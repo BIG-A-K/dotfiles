@@ -1,25 +1,46 @@
-# dot files
-このリポジトリは私の開発環境のベースとなる設定ファイルを管理しています。
+<div align="center">
+
+<img src="assets/banner.svg" alt="dotfiles" width="820">
+
+私の開発環境のベースとなる設定ファイル
+
+![macOS](https://img.shields.io/badge/macOS-000000?style=flat-square&logo=apple&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
+![Zsh](https://img.shields.io/badge/Zsh-89E051?style=flat-square&logo=zsh&logoColor=black)
+![Bash](https://img.shields.io/badge/Bash-4EAA25?style=flat-square&logo=gnubash&logoColor=white)
+![Neovim](https://img.shields.io/badge/Neovim-57A143?style=flat-square&logo=neovim&logoColor=white)
+![Vim](https://img.shields.io/badge/Vim-019733?style=flat-square&logo=vim&logoColor=white)
+![tmux](https://img.shields.io/badge/tmux-1BB91F?style=flat-square&logo=tmux&logoColor=white)
+![WezTerm](https://img.shields.io/badge/WezTerm-4E49EE?style=flat-square&logo=wezterm&logoColor=white)
+![Starship](https://img.shields.io/badge/Starship-DD0B78?style=flat-square&logo=starship&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
+![Lua](https://img.shields.io/badge/Lua-2C2D72?style=flat-square&logo=lua&logoColor=white)
+
+</div>
 
 ## 内容物
-- `tmux.conf`
-- `wezterm.lua`
-- `gitconfig`
-- `zshrc`
-- `bashrc`: bashしかない小さい環境向けの最小設定ファイル
-- `nvim/init.lua`: neovimの設定ファイル
-- `vimrc`
-- `alias`: エイリアスをまとめて設定したファイル。bashでも利用可能。追加ツールがある場合だけ拡張されます
-- `starship.conf/*.toml`: starshipの設定ファイル
-- `scripts/imgcat`: iTerm2のInline Images Protocol用スクリプト。iTerm2の公開スクリプトを元に、WezTermで使いやすいように調整しています
-- `install.sh`: 各設定ファイルをホームディレクトリへsymlinkするスクリプト
+
+| ファイル | 説明 |
+| --- | --- |
+| `tmux.conf` | tmuxの設定ファイル |
+| `wezterm.lua` | WezTermの設定ファイル |
+| `gitconfig` | gitの設定ファイル |
+| `zshrc` | zshの設定ファイル |
+| `bashrc` | bashしかない小さい環境向けの最小設定ファイル |
+| `nvim/init.lua` | neovimの設定ファイル |
+| `vimrc` | vimの設定ファイル |
+| `alias` | エイリアスをまとめて設定したファイル。bashでも利用可能。追加ツールがある場合だけ拡張されます |
+| `starship.conf/*.toml` | starshipの設定ファイル |
+| `scripts/imgcat` | iTerm2のInline Images Protocol用スクリプト。iTerm2の公開スクリプトを元に、WezTermで使いやすいように調整しています |
+| `install.sh` | 各設定ファイルをホームディレクトリへsymlinkするスクリプト |
 
 ## 使い方
+
 ### 必須条件
 - mac or linux
 - gitが使えること
 
-### 1.環境準備
+### 1. 環境準備
 miseを用いてライブラリやコーディングツールをインストールします
 
 ```sh
@@ -28,7 +49,7 @@ curl https://mise.run | sh
 完了したら以下を実行します。
 - 最小構成
 ```sh
-mise use -g bat starship tmux
+mise use -g bat starship
 ```
 - おすすめのライブラリ
 ```sh
@@ -73,7 +94,7 @@ Starshipの設定は `earth` がデフォルトです。別のプロファイル
 ./install.sh --force
 ```
 
-作成される主なリンクは以下です。
+### 作成されるリンク
 
 - `~/.zshrc` -> `zshrc`
 - `~/.bashrc` -> `bashrc`
