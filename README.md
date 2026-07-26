@@ -58,18 +58,18 @@ mise use -g uv bat aws-cli bun claude-code delta starship opencode eza tmux dust
 
 ### 2. 設定の反映
 
-リポジトリをsubmodule込みでcloneして、インストールスクリプトを実行します。
+リポジトリをcloneして、インストールスクリプトを実行します。
 
 ```sh
-git clone --recurse-submodules https://github.com/BIG-A-K/dotfiles.git ~/dotfiles
+git clone https://github.com/BIG-A-K/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ./install.sh
 ```
 
-すでにclone済みの場合は、以下でsubmoduleを取得します。
+`install.sh` はsymlinkを張る前に `git submodule sync --recursive` と `git submodule update --init --recursive` を実行するので、submoduleの取得・更新を手動で行う必要はありません。スキップしたい場合は `--skip-submodules` を指定します。
 
 ```sh
-git submodule update --init --recursive
+./install.sh --skip-submodules
 ```
 
 既存の設定ファイルがある場合は上書きせず、symlinkの作成をスキップします。`-f, --force` を指定すると、既存の実ファイルやディレクトリは `~/.dotfiles-backup/YYYYmmdd-HHMMSS/` に退避してからsymlinkを作成し、既存のsymlinkは上書きします。
@@ -93,6 +93,14 @@ Starshipの設定は `earth` がデフォルトです。別のプロファイル
 ```sh
 ./install.sh --force
 ```
+
+
+#### starshipのカラーテーマ
+starshipのテーマに合わせてtmux.confのカラーテーマも変わります。どのように変わるかは以下のスクリプトで一覧を見ることが出来ます。
+```bash
+./scripts/starship-list.sh
+```
+
 
 ### 作成されるリンク
 
