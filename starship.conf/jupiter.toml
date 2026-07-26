@@ -1,39 +1,39 @@
 format = """
-[](fg:#C98B45)\
+[](fg:#FF8F40)\
 $os\
-[](fg:#C98B45)\
-[ ](fg:#E7C99D)\
+[](fg:#FF8F40)\
+[ ](fg:#E6B450)\
 $username\
 $hostname\
-[](fg:#E7C99D)\
-[ ](fg:#a3aed2)\
+[](fg:#E6B450)\
+[ ](fg:#39BAE6)\
 $directory\
-[](fg:#a3aed2 bg:#394260)\
+[](fg:#39BAE6 bg:#1C2028)\
 $git_branch\
 $git_status\
-[](fg:#394260 bg:#212736)\
+[](fg:#1C2028 bg:#11151C)\
 $nodejs\
 $rust\
 $golang\
 $php\
-[](fg:#212736 bg:#1d2230)\
+[](fg:#11151C bg:#0D1017)\
 $time\
-[ ](fg:#1d2230)\
+[ ](fg:#0D1017)\
 \n$character
 """
 
 [username]
-style_user = "fg:#4B352B bg:#E7C99D"
+style_user = "fg:#ffffff bg:#E6B450"
 format = "[$user]($style)"
 show_always = true
 
 [hostname]
 ssh_only = false
-style = "fg:#4B352B bg:#E7C99D"
+style = "fg:#ffffff bg:#E6B450"
 format = "[@$hostname]($style)"
 
 [directory]
-style = "fg:#ffffff bg:#a3aed2"
+style = "fg:#ffffff bg:#39BAE6"
 read_only = ''
 format = '[ $path ]($style)[$read_only]($style)'
 truncation_length = 0
@@ -49,48 +49,48 @@ use_os_path_sep = true
 
 [git_branch]
 symbol = ""
-style = "bg:#394260"
-format = '[[ $symbol $branch ](fg:#E7C99D bg:#394260)]($style)'
+style = "bg:#1C2028"
+format = '[[ $symbol $branch ](fg:#AAD94C bg:#1C2028)]($style)'
 
 [git_status]
-style = "bg:#394260"
-format = '[[($all_status$ahead_behind )](fg:#E7C99D bg:#394260)]($style)'
+style = "bg:#1C2028"
+format = '[[($all_status$ahead_behind )](fg:#AAD94C bg:#1C2028)]($style)'
 
 [nodejs]
 symbol = ""
-style = "bg:#251D1A"
-format = '[[ $symbol ($version) ](fg:#D79A5B bg:#251D1A)]($style)'
+style = "bg:#11151C"
+format = '[[ $symbol ($version) ](fg:#FFB454 bg:#11151C)]($style)'
 
 [rust]
 symbol = ""
-style = "bg:#251D1A"
-format = '[[ $symbol ($version) ](fg:#D79A5B bg:#251D1A)]($style)'
+style = "bg:#11151C"
+format = '[[ $symbol ($version) ](fg:#FFB454 bg:#11151C)]($style)'
 
 [golang]
 symbol = ""
-style = "bg:#251D1A"
-format = '[[ $symbol ($version) ](fg:#D79A5B bg:#251D1A)]($style)'
+style = "bg:#11151C"
+format = '[[ $symbol ($version) ](fg:#FFB454 bg:#11151C)]($style)'
 
 [php]
 symbol = ""
-style = "bg:#251D1A"
-format = '[[ $symbol ($version) ](fg:#D79A5B bg:#251D1A)]($style)'
+style = "bg:#11151C"
+format = '[[ $symbol ($version) ](fg:#FFB454 bg:#11151C)]($style)'
 
 [time]
 disabled = false
 time_format = "%T"
-style = "bg:#1d2230"
-format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
+style = "bg:#0D1017"
+format = '[[  $time ](fg:#ACB6BF bg:#0D1017)]($style)'
 
 [localip]
-style = "fg:#e3e5e5 bg:#E7C99D"
+style = "fg:#ffffff bg:#E6B450"
 ssh_only = false
-format = '[[ $localipv4 ](fg:#E7C99D bg:#1d2230)]($style)'
+format = '[[ $localipv4 ](fg:#E6B450 bg:#0D1017)]($style)'
 disabled = false
 
 [os]
 disabled = false
-style = "bg:#C98B45 fg:#ffffff"
+style = "bg:#FF8F40 fg:#ffffff"
 
 
 [os.symbols]
