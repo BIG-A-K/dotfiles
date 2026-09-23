@@ -28,7 +28,9 @@ return {
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = { "rafamadriz/friendly-snippets" },
     opts = {
-      keymap = { preset = "default" }, -- <C-y> 確定 / <C-n> <C-p> 選択 / <C-space> 補完メニュー
+      -- <Tab> 確定（スニペット内では次の位置へ） / <S-Tab> 前の位置へ
+      -- <C-n> <C-p> 選択 / <C-space> 補完メニュー / <C-e> 閉じる
+      keymap = { preset = "super-tab" },
       appearance = { nerd_font_variant = "mono" },
       completion = {
         documentation = { auto_show = true, auto_show_delay_ms = 200 },
